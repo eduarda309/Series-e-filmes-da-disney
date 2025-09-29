@@ -1,1 +1,141 @@
 Series e filmes da Disney
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filmes e Séries da Disney</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #0054a0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .movie {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .movie:hover {
+            transform: scale(1.05);
+        }
+        .movie img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        .movie h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .movie p {
+            color: #666;
+            padding: 0 10px 10px;
+        }
+        .movie a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 8px 16px;
+            background-color: #0054a0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .movie a:hover {
+            background-color: #003f7c;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Filmes e Séries da Disney</h1>
+        <p>Explore o mágico universo da Disney!</p>
+    </header>
+
+    <div class="container">
+        <h2>Filmes e Séries Populares</h2>
+        <div class="movie-list">
+            <!-- Filme 1 -->
+            <div class="movie">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Frozen_II_poster.jpg" alt="Frozen 2">
+                <h3>Frozen II</h3>
+                <p>Aventuras mágicas e emocionantes com Elsa e Anna.</p>
+                <a href="https://www.disneyplus.com/br/movies/frozen-ii/6zvW54hbXVVJ" target="_blank">Assistir agora</a>
+            </div>
+
+            <!-- Filme 2 -->
+            <div class="movie">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Avengers_Endgame_poster.jpg" alt="Avengers Endgame">
+                <h3>Avengers: Endgame</h3>
+                <p>O épico confronto final dos Vingadores contra Thanos.</p>
+                <a href="https://www.disneyplus.com/br/movies/avengers-endgame/7AKl4vA6pvFG" target="_blank">Assistir agora</a>
+            </div>
+
+            <!-- Filme 3 -->
+            <div class="movie">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Star_Wars_The_Force_Awakens.jpg" alt="Star Wars: The Force Awakens">
+                <h3>Star Wars: The Force Awakens</h3>
+                <p>Uma nova geração de heróis se junta à resistência contra o Império.</p>
+                <a href="https://www.disneyplus.com/br/movies/star-wars-the-force-awakens/5TZlqopXwUdn" target="_blank">Assistir agora</a>
+            </div>
+
+            <!-- Série 1 -->
+            <div class="movie">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/The_Mandalorian_Season_1.jpg" alt="The Mandalorian">
+                <h3>The Mandalorian</h3>
+                <p>As aventuras de um caçador de recompensas no universo Star Wars.</p>
+                <a href="https://www.disneyplus.com/br/series/the-mandalorian/2Bd1jtVnFgsN" target="_blank">Assistir agora</a>
+            </div>
+
+            <!-- Série 2 -->
+            <div class="movie">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/WandaVision_logo.jpg" alt="WandaVision">
+                <h3>WandaVision</h3>
+                <p>Uma mistura de comédia e mistério, com Wanda e Visão.</p>
+                <a href="https://www.disneyplus.com/br/series/wandavision/1U2jjmD6jm9T" target="_blank">Assistir agora</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Filmes e Séries da Disney. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

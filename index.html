@@ -4,833 +4,551 @@ Series e filmes da Disney
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disney+ Brasil</title>
+    <title>Disney+ Brasil - Filmes e Séries</title>
     <style>
         body {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0c1426 0%, #1a2332 50%, #0f1419 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .header {
-            background: rgba(12, 20, 38, 0.95);
-            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.8);
             padding: 1rem 2rem;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 3px solid #113ccf;
-            box-shadow: 0 4px 20px rgba(17, 60, 207, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .nav {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 2rem;
         }
 
-        .logo {
-            font-size: 2.2rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #113ccf, #00d4ff, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(17, 60, 207, 0.5);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
+        .nav-item {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 600;
-            position: relative;
-            padding: 0.5rem 0;
+            border: none;
+            color: white;
+            font-size: 1rem;
         }
 
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #113ccf, #00d4ff);
-            transition: width 0.3s ease;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .nav-menu a:hover {
-            color: #00d4ff;
+        .nav-item:hover, .nav-item.active {
+            background: #00d4ff;
             transform: translateY(-2px);
         }
 
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                        radial-gradient(circle at 30% 20%, rgba(17, 60, 207, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(0, 212, 255, 0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 10%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="stars" patternUnits="userSpaceOnUse" width="100" height="100"><circle fill="white" opacity="0.1" cx="20" cy="30" r="1"/><circle fill="white" opacity="0.15" cx="80" cy="70" r="0.5"/><circle fill="white" opacity="0.1" cx="50" cy="10" r="0.8"/><circle fill="white" opacity="0.12" cx="90" cy="40" r="0.6"/></pattern></defs><rect width="1200" height="800" fill="url(%23stars)"/></svg>');
-            animation: twinkle 4s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-
-        .hero-content {
-            max-width: 900px;
-            padding: 2rem;
-            margin-top: 80px;
-            position: relative;
-            z-index: 2;
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #113ccf, #00d4ff, #ffd700, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: heroGlow 3s ease-in-out infinite alternate;
-            text-shadow: 0 0 50px rgba(17, 60, 207, 0.5);
-        }
-
-        @keyframes heroGlow {
-            from { 
-                filter: drop-shadow(0 0 20px rgba(17, 60, 207, 0.6));
-                transform: scale(1);
-            }
-            to { 
-                filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.8));
-                transform: scale(1.02);
-            }
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1.6rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
-            line-height: 1.6;
         }
 
-        .cta-button {
-            background: linear-gradient(45deg, #113ccf, #00d4ff);
-            color: white;
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(17, 60, 207, 0.5);
-        }
-
-        .main-content {
-            padding: 5rem 2rem;
-            max-width: 1400px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 2rem;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            text-align: center;
             margin-bottom: 3rem;
-            text-align: center;
-            background: linear-gradient(45deg, #00d4ff, #113ccf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .search-section {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .search-container {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .search-input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #113ccf;
-            border-radius: 30px;
-            padding: 1.2rem 2rem;
-            font-size: 1.2rem;
-            color: white;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #00d4ff;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
-            transform: scale(1.02);
-        }
-
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: rgba(17, 60, 207, 0.2);
-            color: white;
-            border: 2px solid #113ccf;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #113ccf, #00d4ff);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .filter-btn:hover::before,
-        .filter-btn.active::before {
-            left: 0;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            transform: scale(1.05);
-            border-color: #00d4ff;
+            color: #00d4ff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
         .content-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
             padding: 2rem;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(17, 60, 207, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(17, 60, 207, 0.1), rgba(0, 212, 255, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .content-card:hover::before {
-            opacity: 1;
         }
 
         .content-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(17, 60, 207, 0.4);
-            border-color: #00d4ff;
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .content-poster {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #113ccf, #00d4ff, #ffd700);
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .card-icon {
             font-size: 4rem;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        .content-poster::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .content-card:hover .content-poster::after {
-            left: 100%;
-        }
-
-        .content-title {
+        .card-title {
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
+            text-align: center;
             color: #00d4ff;
         }
 
-        .content-description {
-            opacity: 0.85;
+        .card-description {
             line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .content-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .content-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #ffd700;
-            font-weight: bold;
-        }
-
-        .content-type {
-            background: linear-gradient(45deg, #113ccf, #00d4ff);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .brands-section {
-            margin: 5rem 0;
+            opacity: 0.9;
             text-align: center;
         }
 
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .featured-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
         }
 
-        .brand-card {
-            background: rgba(255, 255, 255, 0.05);
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .featured-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 15px;
             padding: 2rem;
+            text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
-            border: 2px solid transparent;
         }
 
-        .brand-card:hover {
+        .featured-item:hover {
             transform: scale(1.05);
-            border-color: #00d4ff;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .brand-logo {
+        .featured-emoji {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        .brand-name {
+        .featured-title {
             font-size: 1.3rem;
             font-weight: bold;
-            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-year {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         .footer {
-            background: rgba(12, 20, 38, 0.95);
-            padding: 4rem 2rem 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
             text-align: center;
-            border-top: 3px solid #113ccf;
-            margin-top: 5rem;
+            margin-top: 4rem;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #00d4ff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
+        .search-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
             color: white;
-            transform: translateY(-2px);
+            font-size: 1rem;
+            width: 300px;
+            backdrop-filter: blur(10px);
         }
 
-        .footer-text {
-            opacity: 0.7;
-            margin-top: 2rem;
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
-            .nav-menu {
-                display: none;
-            }
-            
-            .content-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .filter-tabs {
+            .nav {
+                flex-direction: column;
                 gap: 1rem;
             }
             
-            .filter-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
+            .header {
+                flex-direction: column;
+                gap: 1rem;
             }
-
-            .section-title {
-                font-size: 2.2rem;
+            
+            .search-bar {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <header class="header">
+        <div class="logo">
+            🏰 Disney+ Brasil
+        </div>
         <nav class="nav">
-            <div class="logo">Disney+ ✨</div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#filmes">Filmes</a></li>
-                <li><a href="#series">Séries</a></li>
-                <li><a href="#infantil">Infantil</a></li>
-                <li><a href="#marcas">Marcas</a></li>
-            </ul>
+            <button class="nav-item active" onclick="showSection('filmes')">Filmes</button>
+            <button class="nav-item" onclick="showSection('series')">Séries</button>
+            <button class="nav-item" onclick="showSection('classicos')">Clássicos</button>
         </nav>
+        <input type="text" class="search-bar" placeholder="Buscar filmes e séries..." onkeyup="searchContent(this.value)">
     </header>
 
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <h1>Bem-vindo à Magia</h1>
-            <p>Descubra histórias inesquecíveis, heróis lendários e aventuras que despertam a imaginação em toda a família</p>
-            <button class="cta-button" onclick="scrollToContent()">Começar a Assistir</button>
-        </div>
+    <section class="hero">
+        <h1>✨ O Mundo Mágico da Disney ✨</h1>
+        <p>Descubra os melhores filmes e séries da Disney, Pixar, Marvel, Star Wars e National Geographic</p>
     </section>
 
-    <main class="main-content">
-        <div class="search-section">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="🔍 Busque por filmes, séries ou personagens..." id="searchInput" oninput="filterContent()">
+    <div class="container">
+        <div id="filmes-section">
+            <h2 class="section-title">🎬 Filmes em Destaque</h2>
+            
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Filmes Disponíveis</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Séries Originais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4K</div>
+                    <div class="stat-label">Qualidade Ultra HD</div>
+                </div>
+            </div>
+
+            <div class="featured-section">
+                <h3 class="section-title">🌟 Lançamentos Recentes</h3>
+                <div class="featured-grid" id="movies-grid">
+                    <div class="featured-item" data-title="Encanto">
+                        <div class="featured-emoji">🦋</div>
+                        <div class="featured-title">Encanto</div>
+                        <div class="featured-year">2021</div>
+                    </div>
+                    <div class="featured-item" data-title="Luca">
+                        <div class="featured-emoji">🌊</div>
+                        <div class="featured-title">Luca</div>
+                        <div class="featured-year">2021</div>
+                    </div>
+                    <div class="featured-item" data-title="Raya e o Último Dragão">
+                        <div class="featured-emoji">🐉</div>
+                        <div class="featured-title">Raya e o Último Dragão</div>
+                        <div class="featured-year">2021</div>
+                    </div>
+                    <div class="featured-item" data-title="Soul">
+                        <div class="featured-emoji">🎷</div>
+                        <div class="featured-title">Soul</div>
+                        <div class="featured-year">2020</div>
+                    </div>
+                    <div class="featured-item" data-title="Frozen 2">
+                        <div class="featured-emoji">❄️</div>
+                        <div class="featured-title">Frozen 2</div>
+                        <div class="featured-year">2019</div>
+                    </div>
+                    <div class="featured-item" data-title="Toy Story 4">
+                        <div class="featured-emoji">🤠</div>
+                        <div class="featured-title">Toy Story 4</div>
+                        <div class="featured-year">2019</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">🏰</div>
+                    <div class="card-title">Animações Disney</div>
+                    <div class="card-description">
+                        Mergulhe no mundo mágico das animações clássicas e modernas da Disney, com histórias que encantam todas as idades.
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">Pixar</div>
+                    <div class="card-description">
+                        Aventuras emocionantes e tecnologia de ponta se encontram nos filmes da Pixar, criando experiências cinematográficas únicas.
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">Marvel</div>
+                    <div class="card-description">
+                        Heróis épicos, batalhas grandiosas e o universo cinematográfico mais popular do mundo estão aqui.
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="filter-tabs">
-            <button class="filter-btn active" onclick="filterByCategory('todos')">Todos</button>
-            <button class="filter-btn" onclick="filterByCategory('filmes')">Filmes</button>
-            <button class="filter-btn" onclick="filterByCategory('series')">Séries</button>
-            <button class="filter-btn" onclick="filterByCategory('animacao')">Animação</button>
-            <button class="filter-btn" onclick="filterByCategory('marvel')">Marvel</button>
-            <button class="filter-btn" onclick="filterByCategory('starwars')">Star Wars</button>
-            <button class="filter-btn" onclick="filterByCategory('pixar')">Pixar</button>
-        </div>
+        <div id="series-section" style="display: none;">
+            <h2 class="section-title">📺 Séries Originais</h2>
+            
+            <div class="featured-section">
+                <h3 class="section-title">🔥 Séries Populares</h3>
+                <div class="featured-grid" id="series-grid">
+                    <div class="featured-item" data-title="The Mandalorian">
+                        <div class="featured-emoji">🛸</div>
+                        <div class="featured-title">The Mandalorian</div>
+                        <div class="featured-year">2019-2023</div>
+                    </div>
+                    <div class="featured-item" data-title="WandaVision">
+                        <div class="featured-emoji">🔮</div>
+                        <div class="featured-title">WandaVision</div>
+                        <div class="featured-year">2021</div>
+                    </div>
+                    <div class="featured-item" data-title="Loki">
+                        <div class="featured-emoji">⚡</div>
+                        <div class="featured-title">Loki</div>
+                        <div class="featured-year">2021-2023</div>
+                    </div>
+                    <div class="featured-item" data-title="The Falcon and The Winter Soldier">
+                        <div class="featured-emoji">🛡️</div>
+                        <div class="featured-title">Falcon e Soldado Invernal</div>
+                        <div class="featured-year">2021</div>
+                    </div>
+                    <div class="featured-item" data-title="Hawkeye">
+                        <div class="featured-emoji">🏹</div>
+                        <div class="featured-title">Hawkeye</div>
+                        <div class="featured-year">2021</div>
+                    </div>
+                    <div class="featured-item" data-title="Moon Knight">
+                        <div class="featured-emoji">🌙</div>
+                        <div class="featured-title">Moon Knight</div>
+                        <div class="featured-year">2022</div>
+                    </div>
+                </div>
+            </div>
 
-        <h2 class="section-title">🎬 Catálogo Completo</h2>
-        <div class="content-grid" id="contentGrid">
-            <!-- Content will be populated by JavaScript -->
-        </div>
-
-        <div class="brands-section">
-            <h2 class="section-title">🌟 Nossas Marcas</h2>
-            <div class="brands-grid">
-                <div class="brand-card" onclick="filterByCategory('disney')">
-                    <div class="brand-logo">🏰</div>
-                    <div class="brand-name">Disney</div>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">⭐</div>
+                    <div class="card-title">Star Wars</div>
+                    <div class="card-description">
+                        Explore galáxias distantes com as séries originais de Star Wars, incluindo The Mandalorian e muito mais.
+                    </div>
                 </div>
-                <div class="brand-card" onclick="filterByCategory('pixar')">
-                    <div class="brand-logo">💡</div>
-                    <div class="brand-name">Pixar</div>
+                <div class="content-card">
+                    <div class="card-icon">🦸</div>
+                    <div class="card-title">Marvel Studios</div>
+                    <div class="card-description">
+                        Séries exclusivas do Universo Cinematográfico Marvel que expandem as histórias dos seus heróis favoritos.
+                    </div>
                 </div>
-                <div class="brand-card" onclick="filterByCategory('marvel')">
-                    <div class="brand-logo">⚡</div>
-                    <div class="brand-name">Marvel</div>
-                </div>
-                <div class="brand-card" onclick="filterByCategory('starwars')">
-                    <div class="brand-logo">⭐</div>
-                    <div class="brand-name">Star Wars</div>
-                </div>
-                <div class="brand-card" onclick="filterByCategory('natgeo')">
-                    <div class="brand-logo">🌍</div>
-                    <div class="brand-name">National Geographic</div>
+                <div class="content-card">
+                    <div class="card-icon">🌍</div>
+                    <div class="card-title">National Geographic</div>
+                    <div class="card-description">
+                        Documentários fascinantes sobre natureza, ciência e culturas ao redor do mundo.
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+
+        <div id="classicos-section" style="display: none;">
+            <h2 class="section-title">👑 Clássicos Disney</h2>
+            
+            <div class="featured-section">
+                <h3 class="section-title">💎 Clássicos Atemporais</h3>
+                <div class="featured-grid" id="classics-grid">
+                    <div class="featured-item" data-title="Branca de Neve">
+                        <div class="featured-emoji">🍎</div>
+                        <div class="featured-title">Branca de Neve</div>
+                        <div class="featured-year">1937</div>
+                    </div>
+                    <div class="featured-item" data-title="Cinderela">
+                        <div class="featured-emoji">👠</div>
+                        <div class="featured-title">Cinderela</div>
+                        <div class="featured-year">1950</div>
+                    </div>
+                    <div class="featured-item" data-title="A Bela e a Fera">
+                        <div class="featured-emoji">🌹</div>
+                        <div class="featured-title">A Bela e a Fera</div>
+                        <div class="featured-year">1991</div>
+                    </div>
+                    <div class="featured-item" data-title="O Rei Leão">
+                        <div class="featured-emoji">🦁</div>
+                        <div class="featured-title">O Rei Leão</div>
+                        <div class="featured-year">1994</div>
+                    </div>
+                    <div class="featured-item" data-title="A Pequena Sereia">
+                        <div class="featured-emoji">🧜‍♀️</div>
+                        <div class="featured-title">A Pequena Sereia</div>
+                        <div class="featured-year">1989</div>
+                    </div>
+                    <div class="featured-item" data-title="Aladdin">
+                        <div class="featured-emoji">🧞‍♂️</div>
+                        <div class="featured-title">Aladdin</div>
+                        <div class="featured-year">1992</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">👸</div>
+                    <div class="card-title">Princesas Disney</div>
+                    <div class="card-description">
+                        Reviva as histórias mágicas das princesas Disney que marcaram gerações com suas aventuras e canções inesquecíveis.
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">🎭</div>
+                    <div class="card-title">Era Dourada</div>
+                    <div class="card-description">
+                        Os primeiros clássicos da animação Disney que definiram o padrão de qualidade e magia que conhecemos hoje.
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">🎵</div>
+                    <div class="card-title">Musicais Inesquecíveis</div>
+                    <div class="card-description">
+                        Trilhas sonoras que se tornaram parte da cultura popular mundial, com canções que atravessam gerações.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#sobre">Sobre a Disney+</a>
-                <a href="#ajuda">Central de Ajuda</a>
-                <a href="#termos">Termos de Uso</a>
-                <a href="#privacidade">Política de Privacidade</a>
-                <a href="#contato">Fale Conosco</a>
-                <a href="#dispositivos">Dispositivos Compatíveis</a>
-            </div>
-            <div class="footer-text">
-                <p>&copy; 2024 Disney+ Brasil Demo. Todos os direitos reservados. ✨</p>
-                <p>Este é um projeto demonstrativo criado com Canva Code</p>
-            </div>
-        </div>
+        <p>&copy; 2024 Disney+ Brasil - Demonstração. Todos os direitos reservados à The Walt Disney Company.</p>
+        <p>Este é um site demonstrativo criado para fins educacionais.</p>
     </footer>
 
     <script>
-        const contentLibrary = [
-            {
-                title: "Frozen II",
-                description: "Elsa, Anna, Kristoff e Olaf partem em uma jornada épica para descobrir a origem dos poderes mágicos de Elsa e salvar o reino de Arendelle.",
-                rating: 4.8,
-                emoji: "❄️",
-                categories: ["filmes", "animacao", "disney"],
-                type: "Filme",
-                year: "2019"
-            },
-            {
-                title: "The Mandalorian",
-                description: "Um caçador de recompensas mandaloriano navega pelos confins da galáxia, protegendo uma criança misteriosa com poderes da Força.",
-                rating: 4.9,
-                emoji: "🚀",
-                categories: ["series", "starwars"],
-                type: "Série",
-                year: "2019"
-            },
-            {
-                title: "Vingadores: Ultimato",
-                description: "Os heróis restantes se unem para uma batalha final contra Thanos e tentar desfazer o estalo que eliminou metade da vida no universo.",
-                rating: 4.9,
-                emoji: "⚡",
-                categories: ["filmes", "marvel"],
-                type: "Filme",
-                year: "2019"
-            },
-            {
-                title: "Moana: Um Mar de Aventuras",
-                description: "Uma jovem corajosa navega pelo oceano Pacífico em uma missão para salvar sua ilha natal, acompanhada pelo semideus Maui.",
-                rating: 4.7,
-                emoji: "🌊",
-                categories: ["filmes", "animacao", "disney"],
-                type: "Filme",
-                year: "2016"
-            },
-            {
-                title: "WandaVision",
-                description: "Wanda Maximoff e Vision vivem uma vida suburbana idealizada até descobrirem que nem tudo é o que parece ser.",
-                rating: 4.6,
-                emoji: "🔮",
-                categories: ["series", "marvel"],
-                type: "Série",
-                year: "2021"
-            },
-            {
-                title: "Encanto",
-                description: "Uma família extraordinária vive em uma casa mágica nas montanhas da Colômbia, onde cada membro possui um dom especial.",
-                rating: 4.8,
-                emoji: "🦋",
-                categories: ["filmes", "animacao", "disney"],
-                type: "Filme",
-                year: "2021"
-            },
-            {
-                title: "O Rei Leão",
-                description: "A jornada épica de Simba para se tornar rei da Pedra do Reino e encontrar seu lugar no Círculo da Vida.",
-                rating: 4.9,
-                emoji: "🦁",
-                categories: ["filmes", "animacao", "disney"],
-                type: "Filme",
-                year: "2019"
-            },
-            {
-                title: "Loki",
-                description: "O Deus da Trapaça embarca em aventuras através do tempo e espaço após roubar o Tesseract durante os eventos de Ultimato.",
-                rating: 4.7,
-                emoji: "🐍",
-                categories: ["series", "marvel"],
-                type: "Série",
-                year: "2021"
-            },
-            {
-                title: "Toy Story 4",
-                description: "Woody, Buzz Lightyear e a turma ganham um novo brinquedo chamado Forky e embarcam em uma aventura inesquecível.",
-                rating: 4.6,
-                emoji: "🤠",
-                categories: ["filmes", "animacao", "pixar"],
-                type: "Filme",
-                year: "2019"
-            },
-            {
-                title: "The Clone Wars",
-                description: "As Guerras Clônicas entre a República Galáctica e a Confederação Separatista, com Anakin Skywalker e Ahsoka Tano.",
-                rating: 4.8,
-                emoji: "⚔️",
-                categories: ["series", "starwars", "animacao"],
-                type: "Série",
-                year: "2008"
-            },
-            {
-                title: "Soul",
-                description: "Um professor de música de Nova York embarca em uma jornada extraordinária para descobrir o que realmente faz a vida valer a pena.",
-                rating: 4.7,
-                emoji: "🎵",
-                categories: ["filmes", "animacao", "pixar"],
-                type: "Filme",
-                year: "2020"
-            },
-            {
-                title: "The Falcon and The Winter Soldier",
-                description: "Sam Wilson e Bucky Barnes se unem em uma aventura global que testa suas habilidades e paciência.",
-                rating: 4.5,
-                emoji: "🛡️",
-                categories: ["series", "marvel"],
-                type: "Série",
-                year: "2021"
-            },
-            {
-                title: "Raya e o Último Dragão",
-                description: "Uma jovem guerreira parte em busca do último dragão para salvar o reino de Kumandra de uma força sinistra.",
-                rating: 4.6,
-                emoji: "🐉",
-                categories: ["filmes", "animacao", "disney"],
-                type: "Filme",
-                year: "2021"
-            },
-            {
-                title: "Turning Red",
-                description: "Uma adolescente de 13 anos se transforma em um panda vermelho gigante sempre que fica muito animada.",
-                rating: 4.4,
-                emoji: "🐼",
-                categories: ["filmes", "animacao", "pixar"],
-                type: "Filme",
-                year: "2022"
-            },
-            {
-                title: "Obi-Wan Kenobi",
-                description: "O Mestre Jedi vive em exílio em Tatooine, observando o jovem Luke Skywalker, até ser chamado para uma nova missão.",
-                rating: 4.3,
-                emoji: "🌟",
-                categories: ["series", "starwars"],
-                type: "Série",
-                year: "2022"
-            }
-        ];
-
-        let currentFilter = 'todos';
-        let filteredContent = [...contentLibrary];
-
-        function renderContent(contentToRender = contentLibrary) {
-            const grid = document.getElementById('contentGrid');
-            grid.innerHTML = '';
-
-            contentToRender.forEach((item, index) => {
-                const contentCard = document.createElement('div');
-                contentCard.className = 'content-card';
-                contentCard.style.animationDelay = `${index * 0.1}s`;
-                
-                contentCard.innerHTML = `
-                    <div class="content-poster">${item.emoji}</div>
-                    <div class="content-title">${item.title}</div>
-                    <div class="content-description">${item.description}</div>
-                    <div class="content-meta">
-                        <div class="content-rating">
-                            <span>⭐</span>
-                            <span>${item.rating}</span>
-                        </div>
-                        <div class="content-type">${item.type} • ${item.year}</div>
-                    </div>
-                `;
-                
-                contentCard.addEventListener('click', () => {
-                    showContentDetails(item);
-                });
-                
-                grid.appendChild(contentCard);
-            });
-        }
-
-        function filterByCategory(category) {
-            currentFilter = category;
+        function showSection(section) {
+            // Esconder todas as seções
+            document.getElementById('filmes-section').style.display = 'none';
+            document.getElementById('series-section').style.display = 'none';
+            document.getElementById('classicos-section').style.display = 'none';
             
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
+            // Mostrar a seção selecionada
+            document.getElementById(section + '-section').style.display = 'block';
+            
+            // Atualizar botões ativos
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
             });
             event.target.classList.add('active');
-
-            // Filter content
-            if (category === 'todos') {
-                filteredContent = [...contentLibrary];
-            } else {
-                filteredContent = contentLibrary.filter(item => 
-                    item.categories.includes(category)
-                );
-            }
-
-            renderContent(filteredContent);
         }
 
-        function filterContent() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            let searchResults = [...filteredContent];
-
-            if (searchTerm) {
-                searchResults = filteredContent.filter(item =>
-                    item.title.toLowerCase().includes(searchTerm) ||
-                    item.description.toLowerCase().includes(searchTerm) ||
-                    item.categories.some(cat => cat.toLowerCase().includes(searchTerm))
-                );
-            }
-
-            renderContent(searchResults);
-        }
-
-        function showContentDetails(item) {
-            const categoriesText = item.categories.map(cat => 
-                cat.charAt(0).toUpperCase() + cat.slice(1)
-            ).join(', ');
+        function searchContent(query) {
+            const items = document.querySelectorAll('.featured-item');
+            const searchTerm = query.toLowerCase();
             
-            alert(`🎬 ${item.title} (${item.year})\n\n${item.description}\n\n⭐ Avaliação: ${item.rating}/5\n📺 Tipo: ${item.type}\n🏷️ Categorias: ${categoriesText}\n\n✨ Clique em "Use in a design" para criar seu próprio site Disney+!`);
-        }
-
-        function scrollToContent() {
-            document.querySelector('.main-content').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        // Initialize the page
-        renderContent();
-
-        // Add smooth scrolling for navigation links
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                if (targetId === '#inicio') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+            items.forEach(item => {
+                const title = item.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchTerm) || searchTerm === '') {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
                 } else {
-                    document.querySelector('.main-content').scrollIntoView({ 
-                        behavior: 'smooth' 
-                    });
+                    item.style.display = 'none';
                 }
             });
+            
+            // Se não houver busca, mostrar todos
+            if (query === '') {
+                items.forEach(item => {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                });
+            }
+        }
+
+        // Adicionar efeito de clique nos cards
+        document.querySelectorAll('.featured-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.getAttribute('data-title');
+                alert(`🎬 Você selecionou: ${title}\n\nEste é um site demonstrativo. Em um site real, isso abriria a página do filme/série.`);
+            });
         });
 
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
+        // Adicionar efeito de clique nos cards de conteúdo
+        document.querySelectorAll('.content-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.card-title').textContent;
+                alert(`📱 Categoria selecionada: ${title}\n\nEm um site real, isso mostraria todos os conteúdos desta categoria.`);
+            });
         });
+
+        // Efeito de digitação no placeholder da busca
+        const searchBar = document.querySelector('.search-bar');
+        const placeholders = [
+            'Buscar filmes e séries...',
+            'Procure por Frozen...',
+            'Encontre Marvel...',
+            'Descubra Star Wars...',
+            'Explore Pixar...'
+        ];
+        
+        let currentPlaceholder = 0;
+        setInterval(() => {
+            if (searchBar.value === '') {
+                currentPlaceholder = (currentPlaceholder + 1) % placeholders.length;
+                searchBar.placeholder = placeholders[currentPlaceholder];
+            }
+        }, 3000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9883e136c438c20f',t:'MTc1OTQwNDc1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9883f26e81eac20f',t:'MTc1OTQwNTQ1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
